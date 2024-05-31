@@ -16,6 +16,7 @@ namespace PriceQuotation.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            // set the initial values for total and discount amount
             ViewBag.Total = 0;
             ViewBag.DiscountAmount = 0;
             return View();
@@ -24,11 +25,13 @@ namespace PriceQuotation.Controllers
         [HttpPost]
         public IActionResult Index(DiscountCalculatorModel model)
         {
+            // calculate the discount amount and total if inputs are valid
             if (ModelState.IsValid)
             {
                 ViewBag.DiscountAmount = model.CalculateDiscountAmount();
                 ViewBag.Total = model.CalculateTotal();
             }
+            // if inputs are invalid, set the discount amount and total to 0
             else
             {
                 ViewBag.DiscountAmount = 0;

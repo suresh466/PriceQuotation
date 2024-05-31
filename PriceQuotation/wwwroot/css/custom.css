@@ -2,6 +2,7 @@
     color: blue;
 }
 
+/* make the distance between labels and their values equal for all fields */
 label {
     display: inline-block;
     width: 200px;
@@ -9,6 +10,7 @@ label {
     margin-right: 10px;
 }
 
+/* for space between fields vertically */
 input, span {
     margin-bottom: 10px;
 }
