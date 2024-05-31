@@ -13,9 +13,28 @@ namespace PriceQuotation.Controllers
             _logger = logger;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
+            ViewBag.Total = 0;
+            ViewBag.DiscountAmount = 0;
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Index(DiscountCalculatorModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                ViewBag.DiscountAmount = model.CalculateDiscountAmount();
+                ViewBag.Total = model.CalculateTotal();
+            }
+            else
+            {
+                ViewBag.DiscountAmount = 0;
+                ViewBag.Total = 0;
+            }
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

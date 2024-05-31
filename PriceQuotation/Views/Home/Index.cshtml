@@ -1,7 +1,25 @@
-﻿@{
-    ViewData["Title"] = "Home";
-}
+﻿@model DiscountCalculatorModel
 
-<div class="text-center">
-    <h1 class="display-4">@ViewData["Title"] - Price Quotation</h1>
-</div>
+<h1>Price Quotation</h1>
+
+<form asp-action="Index" method="post">
+    <div asp-validation-summary="All"></div>
+    <div>
+        <label asp-for="Subtotal">Subtotal:</label>
+        <input asp-for="Subtotal" />
+    </div>
+    <div>
+        <label asp-for="DiscountPercent">Discount Percent:</label>
+        <input asp-for="DiscountPercent" />
+    </div>
+    <div>
+        <label>Discount Amount:</label>
+        <span>@ViewBag.DiscountAmount.ToString("C2")</span>
+    </div>
+    <div>
+        <label>Total:</label>
+        <span>@ViewBag.Total.ToString("C2")</span>
+    </div>
+    <button type="submit">Calculate</button>
+    <a asp-action="Index">Clear</a>
+</form>
