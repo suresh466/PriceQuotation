@@ -1,0 +1,14 @@
+﻿h1 {
+    color: blue;
+}
+
+label {
+    display: inline-block;
+    width: 200px;
+    text-align: left;
+    margin-right: 10px;
+}
+
+input, span {
+    margin-bottom: 10px;
+}
