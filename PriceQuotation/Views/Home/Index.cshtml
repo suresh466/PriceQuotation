@@ -4,30 +4,53 @@
     ViewBag.Title = "Home";
 }
 
-<h1>Price Quotation</h1>
+@* jumbotron with greenish background white h1 text that is centered *@
+<div class="jumbotron bg-success">
+    @* OVERRIDES H1's default size by applying "custom-heading" class and overriding font-size in custom.css *@
+    <h1 class="text-white text-center custom-heading"><span class="fas fa-money-bill-alt"></span>&nbsp;Price Quotation</h1>
+</div>
 
+@* use row class that is grid system in bootstrap to make the form vertical for mobile screens *@
 <form asp-action="Index" method="post">
-    @* display all the errors here if there are any *@
-    <div asp-validation-summary="All"></div>
-    <div>
-        <label asp-for="Subtotal">Subtotal:</label>
-        <input asp-for="Subtotal" />
+    @* use 4 cols each for label, input, and error message, so they are stacked in mobile *@
+    <div class="form-group row">
+        <label class="col-sm-4 col-form-label" asp-for="Subtotal">Subtotal:</label>
+        <div class="col-sm-4">
+            <input class="form-control" asp-for="Subtotal" />
+        </div>
+        <div class="col-sm-4">
+            <span asp-validation-for="Subtotal" class="text-danger"></span>
+        </div>
     </div>
-    <div>
-        <label asp-for="DiscountPercent">Discount Percent:</label>
-        <input asp-for="DiscountPercent" />
+    <div class="form-group row">
+        <label class="col-sm-4 col-form-label" asp-for="DiscountPercent">Discount Percent:</label>
+        <div class="col-sm-4">
+            <input class="form-control" asp-for="DiscountPercent" />
+        </div>
+        <div class="col-sm-4">
+            <span asp-validation-for="DiscountPercent" class="text-danger"></span>
+        </div>
     </div>
     @* set the value for discount amount and total *@
-    <div>
-        <label>Discount Amount:</label>
-        <span>@ViewBag.DiscountAmount.ToString("C2")</span>
+    <div class="form-group row">
+        <label class="col-sm-4 col-form-label">Discount Amount:</label>
+        <div class="col-sm-8">
+            <span>@ViewBag.DiscountAmount.ToString("C2")</span>
+        </div>
     </div>
-    <div>
-        <label>Total:</label>
-        <span>@ViewBag.Total.ToString("C2")</span>
+    <div class="form-group row">
+        <label class="col-sm-4 col-form-label">Total:</label>
+        <div class="col-sm-8">
+            <span>@ViewBag.Total.ToString("C2")</span>
+        </div>
     </div>
     @* post request to the controller *@
-    <button type="submit">Calculate</button>
-    @* clear the form by redirecting to the index action *@
-    <a asp-action="Index">Clear</a>
+    <div class="form-group row">
+        @* use all cols of the row for both buttons *@
+        <div class="col-sm-12">
+            <button class="btn btn-success m-1" type="submit">Calculate</button>
+            @* clear the form by redirecting to the index action *@
+            <a class="btn btn-success m-1" asp-action="Index">Clear</a>
+        </div>
+    </div>
 </form>

@@ -1,16 +1,4 @@
-﻿h1 {
-    color: blue;
-}
-
-/* make the distance between labels and their values equal for all fields */
-label {
-    display: inline-block;
-    width: 200px;
-    text-align: left;
-    margin-right: 10px;
-}
-
-/* for space between fields vertically */
-input, span {
-    margin-bottom: 10px;
+﻿/* override the h1 size for jumbotron h1*/
+.custom-heading {
+    font-size: 4rem;
 }
